@@ -9,7 +9,7 @@ import './app-popover'
 export class AppSwitcher extends LitElement {
   @property({ type: String, attribute: 'config-url' }) configUrl = ''
   @property({ type: String }) target = '_blank'
-  @property({ type: String }) theme = 'light'
+  @property({ type: String, reflect: true }) theme = 'light'
 
   @state() private _open = false
   @state() private _loading = false
