@@ -19,16 +19,28 @@ export class AppSwitcher extends LitElement {
   private _service!: AppService
   private _boundClose!: (e: PointerEvent) => void
   private _boundKeydown!: (e: KeyboardEvent) => void
+  private _themeObserver!: MutationObserver
 
   connectedCallback() {
     super.connectedCallback()
     this._service = new AppService(this.configUrl || undefined)
+    this._syncTheme()
+    this._themeObserver = new MutationObserver(() => this._syncTheme())
+    this._themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
     this._load()
   }
 
   disconnectedCallback() {
     super.disconnectedCallback()
+    this._themeObserver?.disconnect()
     this._removeGlobalListeners()
+  }
+
+  private _syncTheme() {
+    this.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
   }
 
   static styles = css`
@@ -37,6 +49,16 @@ export class AppSwitcher extends LitElement {
       position: relative;
       font-size: 14px;
       line-height: 1.5;
+      --as-bg: #ffffff;
+      --as-border: #e2e8f0;
+      --as-text: #475569;
+      --as-accent: #6366f1;
+      --as-accent-rgb: 99 102 241;
+    }
+    :host([theme="dark"]) {
+      --as-bg: #1e293b;
+      --as-border: #334155;
+      --as-text: #94a3b8;
     }
   `
 
