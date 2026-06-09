@@ -1,0 +1,13 @@
+{
+  "title": "Ứng dụng của bạn",
+  "apps": [
+    { "name": "Dashboard", "url": "https://dashboard.example.com", "icon": "https://placehold.co/64x64/3b82f6/fff?text=D" },
+    { "name": "CRM",       "url": "https://crm.example.com",       "icon": "https://placehold.co/64x64/10b981/fff?text=C" },
+    { "name": "Analytics", "url": "https://analytics.example.com", "icon": "https://placehold.co/64x64/f59e0b/fff?text=A" },
+    { "name": "HR",        "url": "https://hr.example.com",        "icon": "https://placehold.co/64x64/8b5cf6/fff?text=H" },
+    { "name": "Support",   "url": "https://support.example.com",   "icon": "https://placehold.co/64x64/ef4444/fff?text=S" },
+    { "name": "Docs",      "url": "https://docs.example.com",      "icon": "https://placehold.co/64x64/06b6d4/fff?text=D" },
+    { "name": "Finance",   "url": "https://finance.example.com",   "icon": "https://placehold.co/64x64/f97316/fff?text=F" },
+    { "name": "Tasks",     "url": "https://tasks.example.com",     "icon": "https://placehold.co/64x64/ec4899/fff?text=T" }
+  ]
+}
