@@ -86,22 +86,39 @@ document.documentElement.classList.toggle('dark')
 
 ### React / Next.js
 
-```tsx
-// In your navbar component
-useEffect(() => {
-  import('https://qizhy-dev.github.io/app-switcher/app-switcher.js')
-}, [])
-
-// In JSX
-{/* @ts-ignore */}
-<app-switcher />
-```
-
-Or add the script to `index.html` / `_document.tsx`:
+Add the script to `index.html`:
 
 ```html
 <script src="https://qizhy-dev.github.io/app-switcher/app-switcher.js"></script>
 ```
+
+Then use it in your navbar component:
+
+```tsx
+{/* @ts-ignore */}
+<app-switcher />
+```
+
+#### With a React theme context
+
+If your app manages dark mode via a React context (e.g. `useTheme()`), pass the `theme` attribute explicitly so the switcher stays in sync with React state instead of relying on DOM observation:
+
+```tsx
+import { useTheme } from '@/context/ThemeProvider'
+
+export default function Header() {
+  const { theme } = useTheme()
+
+  return (
+    <header>
+      {/* @ts-ignore */}
+      <app-switcher theme={theme === 'dark' ? 'dark' : 'light'} />
+    </header>
+  )
+}
+```
+
+> **Why explicit?** The component auto-detects the `dark` class on `<html>` via `MutationObserver`, but React theme contexts sometimes update state before the DOM class is written. Passing `theme` directly avoids any timing gap.
 
 ### Vue
 
