@@ -1,11 +1,11 @@
 import type { AppConfig } from './types'
 
-export const DEFAULT_CONFIG_URL = 'https://Qizhy-DEV.github.io/app-switcher/apps.json'
+export const DEFAULT_CONFIG_URL = 'https://qizhy-dev.github.io/app-switcher/apps.json'
 
 const CACHE_TTL = 5 * 60 * 1000
 
 export class AppService {
-  private url: string
+  private readonly url: string
   private cache: { data: AppConfig; ts: number } | null = null
 
   constructor(url = DEFAULT_CONFIG_URL) {
