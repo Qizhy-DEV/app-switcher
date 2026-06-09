@@ -1,0 +1,88 @@
+<h2>Design — Kiến trúc tổng thể</h2>
+<p class="subtitle">2 file output, 1 điểm quản lý, nhúng vào app bằng 2 dòng HTML</p>
+
+<div class="section">
+  <h3>Các thành phần</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px">
+
+    <div style="background:#1e293b;border-radius:12px;padding:16px;border:1px solid #334155">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#6366f1"></div>
+        <span style="color:#e2e8f0;font-weight:600;font-size:13px">app-switcher.js</span>
+        <span style="font-size:10px;color:#64748b;margin-left:auto">~15KB gzip</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="background:#0f172a;border-radius:6px;padding:8px;font-size:11px;color:#94a3b8;font-family:monospace">&lt;app-switcher&gt; — custom element</div>
+        <div style="background:#0f172a;border-radius:6px;padding:8px;font-size:11px;color:#94a3b8;font-family:monospace">AppTrigger — nút 9 chấm</div>
+        <div style="background:#0f172a;border-radius:6px;padding:8px;font-size:11px;color:#94a3b8;font-family:monospace">AppPopover — grid 4 cột</div>
+        <div style="background:#0f172a;border-radius:6px;padding:8px;font-size:11px;color:#94a3b8;font-family:monospace">AppService — fetch + cache</div>
+      </div>
+    </div>
+
+    <div style="background:#1e293b;border-radius:12px;padding:16px;border:1px solid #334155">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#10b981"></div>
+        <span style="color:#e2e8f0;font-weight:600;font-size:13px">apps.json</span>
+        <span style="font-size:10px;color:#64748b;margin-left:auto">config</span>
+      </div>
+      <div style="background:#0f172a;border-radius:6px;padding:10px;font-size:10px;color:#94a3b8;font-family:monospace;line-height:1.6">
+        {<br>
+        &nbsp;&nbsp;"title": "...",<br>
+        &nbsp;&nbsp;"apps": [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{ "name", "url", "icon" }<br>
+        &nbsp;&nbsp;]<br>
+        }
+      </div>
+      <p style="font-size:10px;color:#64748b;margin-top:8px">Sửa file này → tất cả app thấy ngay</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Data flow</h3>
+  <div style="display:flex;align-items:center;gap:0;margin-top:12px;flex-wrap:wrap;gap:4px">
+    <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:8px 12px;font-size:11px;color:#e2e8f0;text-align:center">
+      App load<br><span style="color:#64748b;font-size:10px">React / Next.js</span>
+    </div>
+    <div style="color:#475569;font-size:16px;padding:0 4px">→</div>
+    <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:8px 12px;font-size:11px;color:#e2e8f0;text-align:center">
+      Mount<br><span style="color:#64748b;font-size:10px">&lt;app-switcher&gt;</span>
+    </div>
+    <div style="color:#475569;font-size:16px;padding:0 4px">→</div>
+    <div style="background:#1e293b;border:1px solid #6366f1;border-radius:8px;padding:8px 12px;font-size:11px;color:#e2e8f0;text-align:center">
+      Fetch apps.json<br><span style="color:#6366f1;font-size:10px">cache 5 phút</span>
+    </div>
+    <div style="color:#475569;font-size:16px;padding:0 4px">→</div>
+    <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:8px 12px;font-size:11px;color:#e2e8f0;text-align:center">
+      Render trigger<br><span style="color:#64748b;font-size:10px">icon 9 chấm</span>
+    </div>
+    <div style="color:#475569;font-size:16px;padding:0 4px">→</div>
+    <div style="background:#1e293b;border:1px solid #10b981;border-radius:8px;padding:8px 12px;font-size:11px;color:#e2e8f0;text-align:center">
+      Click → Popover<br><span style="color:#10b981;font-size:10px">grid 4 cột</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>HTML API — cách nhúng vào app</h3>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+    <div style="background:#0f172a;border-radius:8px;padding:12px;border-left:3px solid #6366f1">
+      <div style="font-size:10px;color:#6366f1;margin-bottom:6px;font-weight:600;letter-spacing:0.05em">MINIMAL — chỉ cần 2 dòng</div>
+      <div style="font-size:11px;color:#94a3b8;font-family:monospace;line-height:1.8">
+        &lt;script src="https://your.gitlab.io/app-switcher.js"&gt;&lt;/script&gt;<br>
+        &lt;app-switcher&gt;&lt;/app-switcher&gt;
+      </div>
+    </div>
+    <div style="background:#0f172a;border-radius:8px;padding:12px;border-left:3px solid #64748b">
+      <div style="font-size:10px;color:#64748b;margin-bottom:6px;font-weight:600;letter-spacing:0.05em">OVERRIDE — khi cần dùng config khác</div>
+      <div style="font-size:11px;color:#94a3b8;font-family:monospace;line-height:1.8">
+        &lt;app-switcher<br>
+        &nbsp;&nbsp;config-url="https://staging/apps.json"<br>
+        &nbsp;&nbsp;theme="light"<br>
+        &gt;&lt;/app-switcher&gt;
+      </div>
+    </div>
+  </div>
+</div>
+
+<p style="margin-top:16px;font-size:12px;color:#64748b;text-align:center">Phần này có ổn không? → trả lời trong terminal</p>

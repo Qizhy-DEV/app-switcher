@@ -1,0 +1,77 @@
+<h2>Trigger button — kiểu nào phù hợp nhất?</h2>
+<p class="subtitle">Đây là nút user click để mở app switcher. Chọn style bạn muốn.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;height:120px;gap:20px">
+      <div style="display:grid;grid-template-columns:repeat(3,8px);gap:3px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.1)">
+        <div style="width:8px;height:8px;border-radius:50%;background:#9ca3af"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#9ca3af"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#9ca3af"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#9ca3af"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#9ca3af"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#9ca3af"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#9ca3af"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#9ca3af"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#9ca3af"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Icon 9 chấm (Google style)</h3>
+      <p>Chỉ có icon, minimal. User quen với pattern này. Thường đặt ở góc trên phải của navbar.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;height:120px;">
+      <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2)">
+        <div style="display:grid;grid-template-columns:repeat(2,6px);gap:2px">
+          <div style="width:6px;height:6px;border-radius:1px;background:#9ca3af"></div>
+          <div style="width:6px;height:6px;border-radius:1px;background:#9ca3af"></div>
+          <div style="width:6px;height:6px;border-radius:1px;background:#9ca3af"></div>
+          <div style="width:6px;height:6px;border-radius:1px;background:#9ca3af"></div>
+        </div>
+        <span style="color:#e5e7eb;font-size:13px;font-weight:500">Apps</span>
+        <svg width="12" height="12" fill="none" stroke="#9ca3af" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Icon + Label "Apps"</h3>
+      <p>Rõ ràng hơn, user biết ngay mục đích. Phù hợp nếu user không quen icon 9 chấm.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;height:120px;gap:16px">
+      <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px rgba(99,102,241,0.3)">
+        <div style="display:grid;grid-template-columns:repeat(3,5px);gap:2px">
+          <div style="width:5px;height:5px;border-radius:50%;background:white"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:white"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:white"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:white"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:white"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:white"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:white"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:white"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:white"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Avatar/Brand button</h3>
+      <p>Button hình tròn có màu brand. Nổi bật, có thể đặt bất cứ đâu. Flexible nhất.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="d" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;height:120px">
+      <div style="font-size:11px;color:#6b7280;font-style:italic;text-align:center;padding:0 16px">Không có trigger tích hợp sẵn<br/>— slot để app tự cung cấp button</div>
+    </div>
+    <div class="card-body">
+      <h3>D — Headless (không có trigger)</h3>
+      <p>Component chỉ cung cấp popover. Mỗi app tự quyết định trigger của mình. Flexible tối đa.</p>
+    </div>
+  </div>
+
+</div>

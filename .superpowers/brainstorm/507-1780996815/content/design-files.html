@@ -1,0 +1,86 @@
+<h2>Design — Cấu trúc file & Deployment</h2>
+<p class="subtitle">Tổ chức source code và quy trình từ push đến production</p>
+
+<div class="section">
+  <h3>Cấu trúc thư mục</h3>
+  <div style="background:#0f172a;border-radius:10px;padding:16px;font-family:monospace;font-size:11px;line-height:2;color:#94a3b8;margin-top:12px">
+    <div style="color:#64748b">app-switcher/</div>
+    <div>├── <span style="color:#e2e8f0">src/</span></div>
+    <div>│   ├── <span style="color:#6366f1">app-switcher.ts</span> <span style="color:#334155">← custom element chính (&lt;app-switcher&gt;)</span></div>
+    <div>│   ├── <span style="color:#6366f1">app-trigger.ts</span> <span style="color:#334155">← icon 9 chấm</span></div>
+    <div>│   ├── <span style="color:#6366f1">app-popover.ts</span> <span style="color:#334155">← grid 4 cột</span></div>
+    <div>│   ├── <span style="color:#6366f1">app-service.ts</span> <span style="color:#334155">← fetch + cache apps.json</span></div>
+    <div>│   └── <span style="color:#6366f1">index.ts</span> <span style="color:#334155">← entry point, export</span></div>
+    <div>├── <span style="color:#10b981">public/</span></div>
+    <div>│   └── <span style="color:#10b981">apps.json</span> <span style="color:#334155">← danh sách app (edit ở đây)</span></div>
+    <div>├── <span style="color:#f59e0b">.gitlab-ci.yml</span> <span style="color:#334155">← CI/CD pipeline</span></div>
+    <div>├── <span style="color:#64748b">vite.config.ts</span></div>
+    <div>└── <span style="color:#64748b">package.json</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Vite build output</h3>
+  <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+    <div style="background:#1e293b;border-radius:8px;padding:10px 14px;border:1px solid #334155;font-size:11px">
+      <span style="color:#6366f1;font-family:monospace">dist/app-switcher.js</span>
+      <span style="color:#64748b;margin-left:8px">~15KB gzip · component</span>
+    </div>
+    <div style="background:#1e293b;border-radius:8px;padding:10px 14px;border:1px solid #334155;font-size:11px">
+      <span style="color:#10b981;font-family:monospace">dist/apps.json</span>
+      <span style="color:#64748b;margin-left:8px">config · copy từ public/</span>
+    </div>
+  </div>
+  <p style="font-size:11px;color:#64748b;margin-top:8px">Vite build với <code style="background:#0f172a;padding:2px 6px;border-radius:4px;color:#a5b4fc;font-size:10px">lib mode</code> — output là 1 file JS duy nhất, không có HTML wrapper.</p>
+</div>
+
+<div class="section">
+  <h3>GitLab CI/CD Pipeline</h3>
+  <div style="display:flex;align-items:center;gap:0;margin-top:12px;flex-wrap:wrap;gap:4px">
+    <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:8px 12px;text-align:center">
+      <div style="font-size:18px">📝</div>
+      <div style="font-size:10px;color:#94a3b8;margin-top:4px">git push</div>
+    </div>
+    <div style="color:#475569;font-size:18px;padding:0 4px">→</div>
+    <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:8px 12px;text-align:center">
+      <div style="font-size:18px">⚙️</div>
+      <div style="font-size:10px;color:#94a3b8;margin-top:4px">GitLab CI<br>npm build</div>
+    </div>
+    <div style="color:#475569;font-size:18px;padding:0 4px">→</div>
+    <div style="background:#1e293b;border:1px solid #6366f1;border-radius:8px;padding:8px 12px;text-align:center">
+      <div style="font-size:18px">🚀</div>
+      <div style="font-size:10px;color:#a5b4fc;margin-top:4px">GitLab Pages<br>auto deploy</div>
+    </div>
+    <div style="color:#475569;font-size:18px;padding:0 4px">→</div>
+    <div style="background:#1e293b;border:1px solid #10b981;border-radius:8px;padding:8px 12px;text-align:center">
+      <div style="font-size:18px">✅</div>
+      <div style="font-size:10px;color:#34d399;margin-top:4px">URL public<br>sẵn sàng</div>
+    </div>
+  </div>
+  <div style="background:#0f172a;border-radius:8px;padding:12px;margin-top:12px;font-family:monospace;font-size:10px;line-height:1.8;color:#94a3b8">
+    <span style="color:#64748b"># .gitlab-ci.yml</span><br>
+    <span style="color:#f59e0b">pages</span>:<br>
+    &nbsp;&nbsp;<span style="color:#6366f1">script</span>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- npm install<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- npm run build<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- mv dist public<br>
+    &nbsp;&nbsp;<span style="color:#6366f1">artifacts</span>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#6366f1">paths</span>: [public]<br>
+    &nbsp;&nbsp;<span style="color:#6366f1">only</span>: [main]
+  </div>
+</div>
+
+<div class="section">
+  <h3>URL sau khi deploy</h3>
+  <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
+    <div style="background:#0f172a;border-radius:6px;padding:8px 12px;font-family:monospace;font-size:11px;color:#a5b4fc">
+      https://yourname.gitlab.io/app-switcher/app-switcher.js
+    </div>
+    <div style="background:#0f172a;border-radius:6px;padding:8px 12px;font-family:monospace;font-size:11px;color:#34d399">
+      https://yourname.gitlab.io/app-switcher/apps.json
+    </div>
+  </div>
+  <p style="font-size:11px;color:#64748b;margin-top:8px">URL này cố định — nhúng 1 lần vào tất cả app, không cần đổi khi update.</p>
+</div>
+
+<p style="margin-top:16px;font-size:12px;color:#64748b;text-align:center">Phần này ổn chưa? → trả lời trong terminal</p>

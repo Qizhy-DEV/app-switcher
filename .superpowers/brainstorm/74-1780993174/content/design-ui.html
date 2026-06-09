@@ -1,0 +1,174 @@
+<h2>Design — UI chi tiết</h2>
+<p class="subtitle">Trigger button, popover, và các trạng thái</p>
+
+<div class="section">
+  <h3>Trigger button (trạng thái bình thường)</h3>
+  <div style="display:flex;gap:24px;margin-top:12px;align-items:center">
+    <div style="background:#1e293b;border-radius:10px;padding:16px 24px;display:flex;align-items:center;gap:12px">
+      <!-- Normal state -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <button style="width:36px;height:36px;border-radius:8px;border:none;background:transparent;cursor:pointer;display:grid;grid-template-columns:repeat(3,6px);gap:3px;align-items:center;justify-items:center;padding:8px;box-sizing:border-box">
+          <div style="width:5px;height:5px;border-radius:50%;background:#94a3b8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#94a3b8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#94a3b8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#94a3b8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#94a3b8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#94a3b8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#94a3b8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#94a3b8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#94a3b8"></div>
+        </button>
+        <span style="font-size:10px;color:#64748b">default</span>
+      </div>
+      <!-- Hover state -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <button style="width:36px;height:36px;border-radius:8px;border:none;background:rgba(99,102,241,0.15);cursor:pointer;display:grid;grid-template-columns:repeat(3,6px);gap:3px;align-items:center;justify-items:center;padding:8px;box-sizing:border-box">
+          <div style="width:5px;height:5px;border-radius:50%;background:#a5b4fc"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#a5b4fc"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#a5b4fc"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#a5b4fc"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#a5b4fc"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#a5b4fc"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#a5b4fc"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#a5b4fc"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#a5b4fc"></div>
+        </button>
+        <span style="font-size:10px;color:#64748b">hover</span>
+      </div>
+      <!-- Active state -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <button style="width:36px;height:36px;border-radius:8px;border:none;background:rgba(99,102,241,0.25);cursor:pointer;display:grid;grid-template-columns:repeat(3,6px);gap:3px;align-items:center;justify-items:center;padding:8px;box-sizing:border-box;outline:2px solid rgba(99,102,241,0.4);outline-offset:1px">
+          <div style="width:5px;height:5px;border-radius:50%;background:#818cf8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#818cf8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#818cf8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#818cf8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#818cf8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#818cf8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#818cf8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#818cf8"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#818cf8"></div>
+        </button>
+        <span style="font-size:10px;color:#64748b">active (popover open)</span>
+      </div>
+    </div>
+    <div style="font-size:11px;color:#64748b;max-width:200px;line-height:1.6">
+      Có thể override màu qua CSS variable:<br>
+      <code style="font-size:10px;background:#0f172a;padding:2px 6px;border-radius:4px;color:#a5b4fc">--as-accent: #your-brand</code>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Popover — grid 4 cột</h3>
+  <div style="display:flex;gap:16px;margin-top:12px;flex-wrap:wrap">
+
+    <!-- Loading state -->
+    <div style="flex:1;min-width:180px">
+      <p style="font-size:10px;color:#64748b;margin:0 0 8px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em">Loading</p>
+      <div style="background:#1e293b;border-radius:12px;padding:14px;border:1px solid #334155;width:200px">
+        <div style="height:10px;background:#334155;border-radius:4px;width:60%;margin-bottom:12px;animation:pulse 1.5s infinite"></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <div style="width:28px;height:28px;border-radius:8px;background:#334155"></div>
+            <div style="height:6px;background:#334155;border-radius:3px;width:90%"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <div style="width:28px;height:28px;border-radius:8px;background:#334155"></div>
+            <div style="height:6px;background:#334155;border-radius:3px;width:90%"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <div style="width:28px;height:28px;border-radius:8px;background:#334155"></div>
+            <div style="height:6px;background:#334155;border-radius:3px;width:90%"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <div style="width:28px;height:28px;border-radius:8px;background:#334155"></div>
+            <div style="height:6px;background:#334155;border-radius:3px;width:90%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loaded state -->
+    <div style="flex:1;min-width:180px">
+      <p style="font-size:10px;color:#64748b;margin:0 0 8px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em">Loaded</p>
+      <div style="background:#1e293b;border-radius:12px;padding:14px;border:1px solid #334155;width:220px;box-shadow:0 8px 32px rgba(0,0,0,0.5)">
+        <p style="font-size:10px;color:#94a3b8;margin:0 0 10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase">Ứng dụng của bạn</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;border-radius:8px;cursor:pointer;transition:background .15s">
+            <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#3b82f6,#1d4ed8)"></div>
+            <span style="font-size:9px;color:#94a3b8;text-align:center">Dashboard</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;border-radius:8px;cursor:pointer">
+            <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#10b981,#059669)"></div>
+            <span style="font-size:9px;color:#94a3b8;text-align:center">CRM</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;border-radius:8px;cursor:pointer;background:rgba(255,255,255,0.07)">
+            <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#f59e0b,#d97706)"></div>
+            <span style="font-size:9px;color:#e2e8f0;text-align:center">Analytics</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;border-radius:8px;cursor:pointer">
+            <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#8b5cf6,#7c3aed)"></div>
+            <span style="font-size:9px;color:#94a3b8;text-align:center">HR</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;border-radius:8px;cursor:pointer">
+            <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#ef4444,#dc2626)"></div>
+            <span style="font-size:9px;color:#94a3b8;text-align:center">Support</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;border-radius:8px;cursor:pointer">
+            <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#06b6d4,#0891b2)"></div>
+            <span style="font-size:9px;color:#94a3b8;text-align:center">Docs</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;border-radius:8px;cursor:pointer">
+            <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#f97316,#ea580c)"></div>
+            <span style="font-size:9px;color:#94a3b8;text-align:center">Finance</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;border-radius:8px;cursor:pointer">
+            <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#ec4899,#db2777)"></div>
+            <span style="font-size:9px;color:#94a3b8;text-align:center">Tasks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error state -->
+    <div style="flex:1;min-width:180px">
+      <p style="font-size:10px;color:#64748b;margin:0 0 8px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em">Error / offline</p>
+      <div style="background:#1e293b;border-radius:12px;padding:14px;border:1px solid #334155;width:200px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 0">
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(239,68,68,0.15);display:flex;align-items:center;justify-content:center;font-size:16px">⚠</div>
+          <p style="font-size:10px;color:#94a3b8;text-align:center;margin:0">Không thể tải danh sách app</p>
+          <button style="font-size:10px;color:#6366f1;background:none;border:1px solid #4338ca;border-radius:6px;padding:4px 12px;cursor:pointer">Thử lại</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <h3>Hành vi đóng/mở</h3>
+  <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
+    <div style="display:flex;align-items:center;gap:10px;font-size:11px;color:#94a3b8">
+      <div style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0"></div>
+      Click trigger → mở popover
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;font-size:11px;color:#94a3b8">
+      <div style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0"></div>
+      Click trigger lần 2 → đóng popover
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;font-size:11px;color:#94a3b8">
+      <div style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0"></div>
+      Click ngoài popover → đóng
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;font-size:11px;color:#94a3b8">
+      <div style="width:6px;height=6px;border-radius:50%;background:#10b981;flex-shrink:0"></div>
+      Nhấn Escape → đóng
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;font-size:11px;color:#94a3b8">
+      <div style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0"></div>
+      Click app → navigate đến URL (new tab hoặc same tab — configurable)
+    </div>
+  </div>
+</div>
+
+<p style="margin-top:16px;font-size:12px;color:#64748b;text-align:center">Phần UI này ổn chưa? → trả lời trong terminal</p>
