@@ -4,12 +4,49 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App Switcher</title>
+    <title>App Switcher — Demo</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+        height: 52px;
+        background: #1e293b;
+        border-bottom: 1px solid #334155;
+      }
+      .logo { font-weight: 600; font-size: 15px; }
+      main {
+        padding: 48px 24px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      code {
+        background: #1e293b;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #a5b4fc;
+      }
+    </style>
     <script type="module" src="/src/index.ts"></script>
   </head>
   <body>
-    <p style="font-family:system-ui;padding:24px;color:#94a3b8">
-      App Switcher — components will be available after Task 6.
-    </p>
+    <nav>
+      <span class="logo">My App</span>
+      <app-switcher config-url="/apps.json"></app-switcher>
+    </nav>
+    <main>
+      <h1>App Switcher Demo</h1>
+      <p>Click vào icon 9 chấm ở góc trên phải để mở app switcher.</p>
+      <p>Component nhúng vào app bằng:</p>
+      <pre><code>&lt;app-switcher&gt;&lt;/app-switcher&gt;</code></pre>
+    </main>
   </body>
 </html>
