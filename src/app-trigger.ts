@@ -8,41 +8,45 @@ export class AppTrigger extends LitElement {
   static styles = css`
     :host { display: inline-block; }
     button {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border: none;
       background: transparent;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       display: grid;
-      grid-template-columns: repeat(3, 5px);
-      gap: 3px;
+      grid-template-columns: repeat(3, 6px);
+      gap: 3.5px;
       align-items: center;
       justify-items: center;
-      padding: 8px;
+      padding: 0;
       box-sizing: border-box;
-      transition: background 0.15s;
+      transition: background 0.2s ease;
+      outline: none;
     }
     button:hover {
-      background: rgba(99, 102, 241, 0.15);
-      background: rgba(var(--as-accent-rgb, 99 102 241) / 0.15);
+      background: rgba(var(--as-accent-rgb, 99 102 241) / 0.1);
+    }
+    button:focus-visible {
+      outline: 2px solid var(--as-accent, #6366f1);
+      outline-offset: 2px;
     }
     button.active {
-      background: rgba(99, 102, 241, 0.25);
-      background: rgba(var(--as-accent-rgb, 99 102 241) / 0.25);
-      outline: 2px solid rgba(99, 102, 241, 0.4);
-      outline-offset: 1px;
+      background: rgba(var(--as-accent-rgb, 99 102 241) / 0.12);
     }
     .dot {
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: #94a3b8;
-      transition: background 0.15s;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
-    button:hover .dot,
+    button:hover .dot {
+      background: var(--as-accent, #6366f1);
+    }
     button.active .dot {
       background: var(--as-accent, #6366f1);
+      transform: scale(1.15);
     }
   `
 
@@ -52,6 +56,7 @@ export class AppTrigger extends LitElement {
         class=${this.active ? 'active' : ''}
         aria-label="App switcher"
         aria-expanded=${String(this.active)}
+        aria-haspopup="true"
         @click=${this._handleClick}
       >
         ${Array.from({ length: 9 }, () => html`<span class="dot"></span>`)}

@@ -15,25 +15,40 @@ export class AppPopover extends LitElement {
     :host {
       display: block;
       position: absolute;
-      top: calc(100% + 8px);
+      top: calc(100% + 10px);
       right: 0;
       z-index: 9999;
     }
     .popover {
-      background: var(--as-bg, #1e293b);
-      border: 1px solid var(--as-border, #334155);
-      border-radius: 12px;
-      padding: 14px;
-      min-width: 220px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      background: var(--as-bg, #ffffff);
+      border: 1px solid var(--as-border, #e2e8f0);
+      border-radius: 16px;
+      padding: 16px;
+      min-width: 268px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 16px 40px -4px rgba(0,0,0,0.12);
+      animation: popover-in 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: top right;
+    }
+    @keyframes popover-in {
+      from {
+        opacity: 0;
+        transform: scale(0.94) translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .popover { animation: none; }
     }
     .title {
       font-size: 10px;
       color: var(--as-text, #94a3b8);
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin: 0 0 10px;
+      margin: 0 0 12px 2px;
     }
     .grid,
     .skeleton-grid {
@@ -45,94 +60,130 @@ export class AppPopover extends LitElement {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
-      padding: 6px 2px;
-      border-radius: 8px;
+      gap: 6px;
+      padding: 10px 4px 8px;
+      border-radius: 10px;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.15s;
+      transition: background 0.15s ease;
+      position: relative;
     }
-    .app-item:hover { background: rgba(255,255,255,0.07); }
-    .app-item.current { background: rgba(99,102,241,0.15); }
+    .app-item:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+    .app-item:hover .app-icon {
+      transform: scale(1.08);
+    }
+    .app-item.current {
+      background: rgba(var(--as-accent-rgb, 99 102 241) / 0.08);
+    }
+    .app-item.current::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--as-accent, #6366f1);
+    }
     .app-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
       object-fit: cover;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     .app-name {
-      font-size: 9px;
-      color: var(--as-text, #94a3b8);
+      font-size: 10px;
+      color: var(--as-text, #475569);
       text-align: center;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      max-width: 52px;
+      max-width: 56px;
+      font-weight: 500;
     }
+    /* Skeleton */
     .skeleton-title {
       height: 10px;
-      background: var(--as-border, #334155);
+      background: var(--as-border, #e2e8f0);
       border-radius: 4px;
-      width: 60%;
-      margin-bottom: 12px;
-      animation: shimmer 1.5s infinite;
+      width: 50%;
+      margin-bottom: 14px;
+      animation: shimmer 1.6s ease-in-out infinite;
     }
     .skeleton-cell {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
-      padding: 6px 2px;
+      gap: 6px;
+      padding: 10px 4px 8px;
     }
     .skeleton-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: var(--as-border, #334155);
-      animation: shimmer 1.5s infinite;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--as-border, #e2e8f0);
+      animation: shimmer 1.6s ease-in-out infinite;
     }
     .skeleton-label {
-      height: 6px;
-      background: var(--as-border, #334155);
+      height: 7px;
+      background: var(--as-border, #e2e8f0);
       border-radius: 3px;
-      width: 80%;
-      animation: shimmer 1.5s infinite;
+      width: 75%;
+      animation: shimmer 1.6s ease-in-out infinite;
     }
+    .skeleton-cell:nth-child(2) .skeleton-icon,
+    .skeleton-cell:nth-child(2) .skeleton-label { animation-delay: 0.1s; }
+    .skeleton-cell:nth-child(3) .skeleton-icon,
+    .skeleton-cell:nth-child(3) .skeleton-label { animation-delay: 0.2s; }
+    .skeleton-cell:nth-child(4) .skeleton-icon,
+    .skeleton-cell:nth-child(4) .skeleton-label { animation-delay: 0.3s; }
     @keyframes shimmer {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+      50% { opacity: 0.45; }
     }
+    /* Error state */
     .error-state {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
-      padding: 12px 0;
+      gap: 10px;
+      padding: 16px 0 8px;
     }
     .error-icon {
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: rgba(239,68,68,0.15);
+      background: rgba(239, 68, 68, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      color: #ef4444;
     }
+    .error-icon svg { width: 20px; height: 20px; }
     .error-message {
-      font-size: 10px;
-      color: var(--as-text, #94a3b8);
+      font-size: 11px;
+      color: var(--as-text, #475569);
       text-align: center;
       margin: 0;
+      font-weight: 500;
     }
     .retry-btn {
-      font-size: 10px;
+      font-size: 11px;
+      font-weight: 600;
       color: var(--as-accent, #6366f1);
-      background: none;
-      border: 1px solid var(--as-accent, #6366f1);
-      border-radius: 6px;
-      padding: 4px 12px;
+      background: rgba(var(--as-accent-rgb, 99 102 241) / 0.08);
+      border: none;
+      border-radius: 8px;
+      padding: 6px 16px;
       cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .retry-btn:hover {
+      background: rgba(var(--as-accent-rgb, 99 102 241) / 0.15);
     }
   `
 
@@ -165,9 +216,15 @@ export class AppPopover extends LitElement {
   private _renderError() {
     return html`
       <div class="error-state">
-        <div class="error-icon">&#9888;</div>
-        <p class="error-message">Kh&#244;ng th&#7875; t&#7843;i danh s&#225;ch app</p>
-        <button class="retry-btn" @click=${this._handleRetry}>Th&#7917; l&#7841;i</button>
+        <div class="error-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <p class="error-message">Không thể tải danh sách app</p>
+        <button class="retry-btn" @click=${this._handleRetry}>Thử lại</button>
       </div>
     `
   }
