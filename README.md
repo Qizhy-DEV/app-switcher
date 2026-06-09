@@ -4,12 +4,14 @@ A universal app navigation widget — embed into any app with 2 lines of HTML. A
 
 ---
 
-## Installation
+## Usage
 
 ```html
-<script src="https://qizhy-dev.github.io/app-switcher/app-switcher.js"></script>
-<app-switcher></app-switcher>
+<script type="module" src="https://qizhy-dev.github.io/hd-switcher/hd-switcher.js"></script>
+<hd-switcher></hd-switcher>
 ```
+
+That's it — no build step, no npm install.
 
 ---
 
@@ -23,49 +25,49 @@ A universal app navigation widget — embed into any app with 2 lines of HTML. A
 
 ```html
 <!-- Open links in the same tab -->
-<app-switcher target="_self"></app-switcher>
+<hd-switcher target="_self"></hd-switcher>
 
 <!-- Use a custom apps.json -->
-<app-switcher config-url="https://yoursite.com/apps.json"></app-switcher>
+<hd-switcher config-url="https://yoursite.com/apps.json"></hd-switcher>
 
 <!-- Force dark theme (not needed if your app already toggles the dark class) -->
-<app-switcher theme="dark"></app-switcher>
+<hd-switcher theme="dark"></hd-switcher>
 ```
 
 ---
 
 ## CSS Custom Properties
 
-Override any variable directly on the `app-switcher` element:
+Override any variable directly on the `hd-switcher` element:
 
 | Variable | Light default | Dark default | Description |
 |---|---|---|---|
-| `--as-bg` | `#ffffff` | `#1e293b` | Popover background |
-| `--as-border` | `#e2e8f0` | `#334155` | Popover border |
-| `--as-text` | `#475569` | `#94a3b8` | App name text color |
-| `--as-accent` | `#6366f1` | `#6366f1` | Hover, active, and dot color |
-| `--as-accent-rgb` | `99 102 241` | `99 102 241` | RGB of accent (used for opacity variants) |
+| `--hds-bg` | `#ffffff` | `#1e293b` | Popover background |
+| `--hds-border` | `#e2e8f0` | `#334155` | Popover border |
+| `--hds-text` | `#475569` | `#94a3b8` | App name text color |
+| `--hds-accent` | `#6366f1` | `#6366f1` | Hover, active, and dot color |
+| `--hds-accent-rgb` | `99 102 241` | `99 102 241` | RGB of accent (used for opacity variants) |
 
 ### Examples
 
 ```css
 /* Override for both themes */
-app-switcher {
-  --as-accent: #f97316;
+hd-switcher {
+  --hds-accent: #f97316;
 }
 
 /* Override light theme only */
-app-switcher[theme="light"] {
-  --as-bg: #f8fafc;
-  --as-border: #cbd5e1;
-  --as-accent: #0ea5e9;
+hd-switcher[theme="light"] {
+  --hds-bg: #f8fafc;
+  --hds-border: #cbd5e1;
+  --hds-accent: #0ea5e9;
 }
 
 /* Override dark theme only */
-app-switcher[theme="dark"] {
-  --as-bg: #0f172a;
-  --as-border: #1e293b;
-  --as-accent: #818cf8;
+hd-switcher[theme="dark"] {
+  --hds-bg: #0f172a;
+  --hds-border: #1e293b;
+  --hds-accent: #818cf8;
 }
 ```
 
@@ -89,14 +91,14 @@ document.documentElement.classList.toggle('dark')
 Add the script to `index.html`:
 
 ```html
-<script src="https://qizhy-dev.github.io/app-switcher/app-switcher.js"></script>
+<script type="module" src="https://qizhy-dev.github.io/hd-switcher/hd-switcher.js"></script>
 ```
 
 Then use it in your navbar component:
 
 ```tsx
 {/* @ts-ignore */}
-<app-switcher />
+<hd-switcher />
 ```
 
 #### With a React theme context
@@ -112,7 +114,7 @@ export default function Header() {
   return (
     <header>
       {/* @ts-ignore */}
-      <app-switcher theme={theme === 'dark' ? 'dark' : 'light'} />
+      <hd-switcher theme={theme === 'dark' ? 'dark' : 'light'} />
     </header>
   )
 }
@@ -124,11 +126,11 @@ export default function Header() {
 
 ```vue
 <template>
-  <app-switcher />
+  <hd-switcher />
 </template>
 
 <script setup>
-import('https://qizhy-dev.github.io/app-switcher/app-switcher.js')
+import('https://qizhy-dev.github.io/hd-switcher/hd-switcher.js')
 </script>
 ```
 
@@ -137,9 +139,9 @@ import('https://qizhy-dev.github.io/app-switcher/app-switcher.js')
 ```html
 <body>
   <nav>
-    <app-switcher></app-switcher>
+    <hd-switcher></hd-switcher>
   </nav>
-  <script src="https://qizhy-dev.github.io/app-switcher/app-switcher.js"></script>
+  <script type="module" src="https://qizhy-dev.github.io/hd-switcher/hd-switcher.js"></script>
 </body>
 ```
 
@@ -198,4 +200,4 @@ The central config file for your app list. Edit and push — all apps see the ch
 
 ## CSS Isolation
 
-The component uses **Shadow DOM** — the host app's CSS does not affect the component internals, and the component's CSS does not leak out. Only CSS custom properties (`--as-*`) penetrate the Shadow DOM boundary, which is the intended theming mechanism.
+The component uses **Shadow DOM** — the host app's CSS does not affect the component internals, and the component's CSS does not leak out. Only CSS custom properties (`--hds-*`) penetrate the Shadow DOM boundary, which is the intended theming mechanism.

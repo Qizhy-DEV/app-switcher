@@ -26,14 +26,14 @@ export class AppTrigger extends LitElement {
       outline: none;
     }
     button:hover {
-      background: rgba(var(--as-accent-rgb, 99 102 241) / 0.1);
+      background: rgba(var(--hds-accent-rgb, 99 102 241) / 0.1);
     }
     button:focus-visible {
-      outline: 2px solid var(--as-accent, #6366f1);
+      outline: 2px solid var(--hds-accent, #6366f1);
       outline-offset: 2px;
     }
     button.active {
-      background: rgba(var(--as-accent-rgb, 99 102 241) / 0.12);
+      background: rgba(var(--hds-accent-rgb, 99 102 241) / 0.12);
     }
     .dot {
       width: 5px;
@@ -43,10 +43,10 @@ export class AppTrigger extends LitElement {
       transition: background 0.2s ease, transform 0.2s ease;
     }
     button:hover .dot {
-      background: var(--as-accent, #6366f1);
+      background: var(--hds-accent, #6366f1);
     }
     button.active .dot {
-      background: var(--as-accent, #6366f1);
+      background: var(--hds-accent, #6366f1);
       transform: scale(1.15);
     }
   `

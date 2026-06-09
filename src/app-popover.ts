@@ -20,8 +20,8 @@ export class AppPopover extends LitElement {
       z-index: 9999;
     }
     .popover {
-      background: var(--as-bg, #ffffff);
-      border: 1px solid var(--as-border, #e2e8f0);
+      background: var(--hds-bg, #ffffff);
+      border: 1px solid var(--hds-border, #e2e8f0);
       border-radius: 16px;
       padding: 16px;
       min-width: 268px;
@@ -44,7 +44,7 @@ export class AppPopover extends LitElement {
     }
     .title {
       font-size: 10px;
-      color: var(--as-text, #94a3b8);
+      color: var(--hds-text, #94a3b8);
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -75,7 +75,7 @@ export class AppPopover extends LitElement {
       transform: scale(1.08);
     }
     .app-item.current {
-      background: rgba(var(--as-accent-rgb, 99 102 241) / 0.08);
+      background: rgba(var(--hds-accent-rgb, 99 102 241) / 0.08);
     }
     .app-item.current::after {
       content: '';
@@ -86,7 +86,7 @@ export class AppPopover extends LitElement {
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background: var(--as-accent, #6366f1);
+      background: var(--hds-accent, #6366f1);
     }
     .app-icon {
       width: 40px;
@@ -97,7 +97,7 @@ export class AppPopover extends LitElement {
     }
     .app-name {
       font-size: 10px;
-      color: var(--as-text, #475569);
+      color: var(--hds-text, #475569);
       text-align: center;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -108,7 +108,7 @@ export class AppPopover extends LitElement {
     /* Skeleton */
     .skeleton-title {
       height: 10px;
-      background: var(--as-border, #e2e8f0);
+      background: var(--hds-border, #e2e8f0);
       border-radius: 4px;
       width: 50%;
       margin-bottom: 14px;
@@ -125,12 +125,12 @@ export class AppPopover extends LitElement {
       width: 40px;
       height: 40px;
       border-radius: 10px;
-      background: var(--as-border, #e2e8f0);
+      background: var(--hds-border, #e2e8f0);
       animation: shimmer 1.6s ease-in-out infinite;
     }
     .skeleton-label {
       height: 7px;
-      background: var(--as-border, #e2e8f0);
+      background: var(--hds-border, #e2e8f0);
       border-radius: 3px;
       width: 75%;
       animation: shimmer 1.6s ease-in-out infinite;
@@ -166,7 +166,7 @@ export class AppPopover extends LitElement {
     .error-icon svg { width: 20px; height: 20px; }
     .error-message {
       font-size: 11px;
-      color: var(--as-text, #475569);
+      color: var(--hds-text, #475569);
       text-align: center;
       margin: 0;
       font-weight: 500;
@@ -174,8 +174,8 @@ export class AppPopover extends LitElement {
     .retry-btn {
       font-size: 11px;
       font-weight: 600;
-      color: var(--as-accent, #6366f1);
-      background: rgba(var(--as-accent-rgb, 99 102 241) / 0.08);
+      color: var(--hds-accent, #6366f1);
+      background: rgba(var(--hds-accent-rgb, 99 102 241) / 0.08);
       border: none;
       border-radius: 8px;
       padding: 6px 16px;
@@ -183,7 +183,7 @@ export class AppPopover extends LitElement {
       transition: background 0.15s ease;
     }
     .retry-btn:hover {
-      background: rgba(var(--as-accent-rgb, 99 102 241) / 0.15);
+      background: rgba(var(--hds-accent-rgb, 99 102 241) / 0.15);
     }
   `
 

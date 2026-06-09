@@ -5,7 +5,7 @@ import type { AppConfig } from './types'
 import './app-trigger'
 import './app-popover'
 
-@customElement('app-switcher')
+@customElement('hd-switcher')
 export class AppSwitcher extends LitElement {
   @property({ type: String, attribute: 'config-url' }) configUrl = ''
   @property({ type: String }) target = '_blank'
@@ -49,16 +49,16 @@ export class AppSwitcher extends LitElement {
       position: relative;
       font-size: 14px;
       line-height: 1.5;
-      --as-bg: #ffffff;
-      --as-border: #e2e8f0;
-      --as-text: #475569;
-      --as-accent: #6366f1;
-      --as-accent-rgb: 99 102 241;
+      --hds-bg: #ffffff;
+      --hds-border: #e2e8f0;
+      --hds-text: #475569;
+      --hds-accent: #6366f1;
+      --hds-accent-rgb: 99 102 241;
     }
     :host([theme="dark"]) {
-      --as-bg: #1e293b;
-      --as-border: #334155;
-      --as-text: #94a3b8;
+      --hds-bg: #1e293b;
+      --hds-border: #334155;
+      --hds-text: #94a3b8;
     }
   `
 

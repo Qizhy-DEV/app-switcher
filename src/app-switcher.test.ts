@@ -12,7 +12,7 @@ async function mount(attrs: Record<string, string> = {}): Promise<AppSwitcher> {
     ok: true,
     json: async () => MOCK_CONFIG,
   }))
-  const el = document.createElement('app-switcher') as AppSwitcher
+  const el = document.createElement('hd-switcher') as AppSwitcher
   for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v)
   document.body.appendChild(el)
   await el.updateComplete
