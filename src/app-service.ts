@@ -1,6 +1,6 @@
 import type { AppConfig } from './types'
 
-export const DEFAULT_CONFIG_URL = 'https://yourname.gitlab.io/app-switcher/apps.json'
+export const DEFAULT_CONFIG_URL = 'https://Qizhy-DEV.github.io/app-switcher/apps.json'
 
 const CACHE_TTL = 5 * 60 * 1000
 
