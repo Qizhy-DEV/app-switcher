@@ -8,17 +8,18 @@ export class AppTrigger extends LitElement {
   static styles = css`
     :host { display: inline-block; }
     button {
-      width: 40px;
-      height: 40px;
+      width: 34px;
+      height: 34px;
       border: none;
       background: transparent;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
       display: grid;
-      grid-template-columns: repeat(3, 6px);
-      gap: 3.5px;
-      align-items: center;
-      justify-items: center;
+      grid-template-columns: repeat(3, 5px);
+      grid-template-rows: repeat(3, 5px);
+      gap: 3px;
+      place-content: center;
+      place-items: center;
       padding: 0;
       box-sizing: border-box;
       transition: background 0.2s ease;
@@ -35,8 +36,8 @@ export class AppTrigger extends LitElement {
       background: rgba(var(--as-accent-rgb, 99 102 241) / 0.12);
     }
     .dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: #94a3b8;
       transition: background 0.2s ease, transform 0.2s ease;
